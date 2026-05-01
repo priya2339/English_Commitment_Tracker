@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>English Commitment</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container" id="loginPage">
+  <h2>Search Student</h2>
+
+  <input id="searchInput" placeholder="Type student name..."/>
+  <div id="suggestions"></div>
+
+  <input id="codeInput" placeholder="Enter Code"/>
+  <button onclick="login()">Login</button>
+
+  <p id="error" style="color:red;"></p>
+</div>
+
+<div id="penaltyPage">
+  <button class="red-btn" onclick="deduct()">SPOKE IN HINDI</button>
+  <div id="info"></div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
