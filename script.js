@@ -3,6 +3,7 @@ const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwf6MXypWT7Z4K6
 
 const STUDENTS = {
   "Aarav Sharma": "A",
+  "Priya Patel" : "priya002"
   "Aanchal Gupta": "A01",
   "Aanchal Mahant": "A02",
   "Aarti Sarthi": "A03",
