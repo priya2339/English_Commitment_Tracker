@@ -1087,11 +1087,11 @@ const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbycqCfgBXiGKxS_
 // ============================================================
 const STUDENTS = {
   "Aarav Sharma": "A",
-<<<<<<< HEAD
+
   "Priya Patel" : "priya002",
-=======
+
   "Priya Patel": "PRIYA002",
->>>>>>> 36bbbf1 (Added new feature)
+
   "Aanchal Gupta": "A01",
   "Aanchal Mahant": "A02",
   "Aarti Sarthi": "A03",
@@ -1103,28 +1103,25 @@ const STUDENTS = {
   "Anshika Sahu": "A09",
   "Anupama Mehar": "A10",
   "Anurekha Nishad": "A11",
-<<<<<<< HEAD
 
-=======
->>>>>>> 36bbbf1 (Added new feature)
   "Babli Sidar": "B01",
   "Bharti Chaturvedi": "B02",
   "Bharti Pradhan": "B03",
   "Bhawna Chouhan": "B04",
   "Bhumika Ratre": "B05",
-<<<<<<< HEAD
+
 
   "Chanchal Sao": "C01",
 
-=======
+
   "Chanchal Sao": "C01",
->>>>>>> 36bbbf1 (Added new feature)
+
   "Deepika Dewangan": "D01",
   "Divya Dewangan": "D02",
   "Divya Sahu": "D03",
   "Doleshwari Sao": "D04",
   "Duleshwari Patel": "D05",
-<<<<<<< HEAD
+
 
   "Fulkumari Chauhan": "F01",
 
@@ -1136,14 +1133,14 @@ const STUDENTS = {
 
   "Jyoti Sao": "J01",
 
-=======
+
   "Fulkumari Chauhan": "F01",
   "Guruwari Sahu": "G01",
   "Hemkumari Sahu": "H01",
   "Hemlata Dansena": "H02",
   "Hemlata Sahu": "H03",
   "Jyoti Sao": "J01",
->>>>>>> 36bbbf1 (Added new feature)
+
   "Kajal Kenvat": "K01",
   "Karina Yadav": "K02",
   "Kativa Panda": "K03",
@@ -1154,15 +1151,14 @@ const STUDENTS = {
   "Khushi Sahu": "K08",
   "Kritika Yadav": "K09",
   "Kusum Yadav": "K10",
-<<<<<<< HEAD
+
 
   "Lata Patel": "L01",
   "Laxmi Sao": "L02",
 
-=======
   "Lata Patel": "L01",
   "Laxmi Sao": "L02",
->>>>>>> 36bbbf1 (Added new feature)
+
   "Madhuri": "M01",
   "Madhuri Yadav": "M02",
   "Mamta Nishad": "M03",
@@ -1177,19 +1173,13 @@ const STUDENTS = {
   "Muskan Choudhary": "M12",
   "Muskan Namdev": "M13",
   "Muskan Sahu": "M14",
-<<<<<<< HEAD
 
-=======
->>>>>>> 36bbbf1 (Added new feature)
   "Nandini Rathia": "N01",
   "Navnita Patail": "N02",
   "Neha Chauhan": "N03",
   "Nikeeta": "N04",
   "Nilkumari Tirki": "N05",
-<<<<<<< HEAD
 
-=======
->>>>>>> 36bbbf1 (Added new feature)
   "Pallavi Pal": "P01",
   "Pallavi Pathak": "P02",
   "Payal Kewat": "P03",
@@ -1203,10 +1193,7 @@ const STUDENTS = {
   "Pratima Mahant": "P11",
   "Priti Patel": "P12",
   "Priti Pradhan": "P13",
-<<<<<<< HEAD
 
-=======
->>>>>>> 36bbbf1 (Added new feature)
   "Rakhi Gupta": "R01",
   "Rani Singh": "R02",
   "Rashmi Jaiswal": "R03",
@@ -1220,10 +1207,8 @@ const STUDENTS = {
   "Roshni Chauhan": "R11",
   "Ruchi Sarthi": "R12",
   "Rupeshani": "R13",
-<<<<<<< HEAD
 
-=======
->>>>>>> 36bbbf1 (Added new feature)
+
   "Sakshi Singh": "S01",
   "Sandhya Sao": "S02",
   "Sanjana": "S03",
@@ -1240,10 +1225,8 @@ const STUDENTS = {
   "Snehalata Ekka": "S14",
   "Sunita Sarthi": "S15",
   "Surajmati Gupta": "S16",
-<<<<<<< HEAD
 
-=======
->>>>>>> 36bbbf1 (Added new feature)
+
   "Tanu Sarthi": "T01",
   "Tanuja Sahu": "T02",
   "Tapshwani Sahu": "T03",
@@ -1253,27 +1236,23 @@ const STUDENTS = {
   "Tomeshwari Verma": "T07",
   "Tripti": "T08",
   "Twinkal Chouhan": "T09",
-<<<<<<< HEAD
 
-=======
->>>>>>> 36bbbf1 (Added new feature)
+
   "Uma Nishad": "U01",
   "Ume Salma": "U02",
   "Usha Pradhan": "U03",
   "Usha Kaiwartya": "U04",
-<<<<<<< HEAD
 
-=======
->>>>>>> 36bbbf1 (Added new feature)
+
+
   "Vanshika Ratre": "V01",
   "Varsha Nirmalkar": "V02",
   "Varsha Singh Rajput": "V03",
   "Veena Choudhary": "V04",
   "Vidya Sahu": "V05",
-<<<<<<< HEAD
 
-=======
->>>>>>> 36bbbf1 (Added new feature)
+
+
   "Yashika Bhowmick": "Y01"
 };
 
@@ -1420,14 +1399,13 @@ function deduct() {
   alert("2 Points Deducted!\nRemaining Points: " + data.points);
 }
 
-<<<<<<< HEAD
 // UPDATE UI
 function updateInfo(){
   let data = JSON.parse(localStorage.getItem(currentUser));
   // document.getElementById("info").innerText =
   //   `Remaining Points: ${data.points}`;
 }
-=======
+
 // ============================================================
 // LOGOUT
 // ============================================================
@@ -1441,4 +1419,4 @@ function logout() {
   const errorEl = document.getElementById("error");
   if (errorEl) errorEl.innerText = "";
 }
->>>>>>> 36bbbf1 (Added new feature)
+
