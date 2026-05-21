@@ -1,20 +1,7 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbycqCfgBXiGKxS_hYeRzO79cw6jrRwyeBG-ANlAF-tH4AwV1WgdXeGV8X7au0G-fT5k/exec";
 
 // ============================================================
-// 🔐 STUDENTS DATA (Name → Login Code)
+// STUDENTS DATA (Name → Login Code)
 // ============================================================
 const STUDENTS = {
   "Aarav Sharma": "A",
@@ -314,7 +301,7 @@ function deduct() {
   // ── SEND TO GOOGLE SHEET ─────────────────────────────────
   fetch(APPS_SCRIPT_URL, {
     method:  "POST",
-    mode:    "no-cors",   // ✅ Fixes CORS error
+    mode:    "no-cors",  
     headers: { "Content-Type": "text/plain;charset=utf-8" },
     body: JSON.stringify({
       name:         currentUser,
@@ -326,8 +313,8 @@ function deduct() {
       time:         now.toLocaleTimeString("en-GB")
     })
   })
-  .then(() => { console.log("✅ Data sent!"); })
-  .catch(err => { console.error("❌ Error:", err); });
+  .then(() => { console.log(" Data sent!"); })
+  .catch(err => { console.error(" Error:", err); });
 
   updateDisplay();
   alert("2 Points Deducted!\nRemaining Points: " + data.points);
