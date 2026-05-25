@@ -236,16 +236,34 @@ function login() {
   document.getElementById("penaltyPage").style.display = "flex";
 
   // Initialize localStorage if first time
-  if (!localStorage.getItem(currentUser)) {
-    localStorage.setItem(currentUser, JSON.stringify({
-      points:       1000,
-      count:        0,
-      monthlyTotal: 0,
-      startDate:    new Date().getTime(),
-      lastDate:     new Date().toLocaleDateString("en-GB")
-    }));
-  }
+  // if (!localStorage.getItem(currentUser)) {
+  //   localStorage.setItem(currentUser, JSON.stringify({
+  //     points:       1000,
+  //     count:        0,
+  //     monthlyTotal: 0,
+  //     startDate:    new Date().getTime(),
+  //     lastDate:     new Date().toLocaleDateString("en-GB")
+  //   }));
+  // }
 
+
+
+fetch(`${APPS_SCRIPT_URL}?action=getStudentData&name=${encodeURIComponent(currentUser)}`)
+  .then(res => res.json())
+  .then(serverData => {
+
+    localStorage.setItem(currentUser, JSON.stringify({
+      points: serverData.points,
+      count: serverData.count,
+      monthlyTotal: serverData.monthlyTotal,
+      startDate: new Date().getTime(),
+      lastDate: new Date().toLocaleDateString("en-GB")
+    }));
+
+    updateDisplay();
+  });
+
+  
   updateDisplay();
 }
 
