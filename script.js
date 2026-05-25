@@ -262,63 +262,134 @@ function updateDisplay() {
   if (countEl) countEl.innerText = data.count;
 }
 
-// ============================================================
-// DEDUCT — called on every button click
-// ============================================================
+// // ============================================================
+// // DEDUCT — called on every button click
+// // ============================================================
+// function deduct() {
+//   let data = JSON.parse(localStorage.getItem(currentUser));
+
+//   const now     = new Date();
+//   const today   = now.toLocaleDateString("en-GB"); // dd/MM/yyyy
+//   const nowTime = now.getTime();
+
+//   // ── DAILY RESET ─────────────────────────────────────────
+//   if (data.lastDate !== today) {
+//     data.count    = 0;
+//     data.lastDate = today;
+//   }
+
+//   // ── 28-DAY RESET ────────────────────────────────────────
+//   const diffDays = (nowTime - data.startDate) / (1000 * 60 * 60 * 24);
+//   if (diffDays >= 28) {
+//     data.monthlyTotal = 0;
+//     data.points       = 1000;
+//     data.startDate    = nowTime;
+//   }
+
+//   // ── DEDUCT 2 POINTS ─────────────────────────────────────
+//   const deductionPerClick = 2;
+//   data.points             = Math.max(0, data.points - deductionPerClick);
+//   data.count             += 1;
+//   data.monthlyTotal      += 1;
+
+//   localStorage.setItem(currentUser, JSON.stringify(data));
+
+//   // Cumulative deduction for today
+//   // Click 1→2, Click 2→4, Click 40→80
+//   const totalDeductedToday = data.count * deductionPerClick;
+
+//   // ── SEND TO GOOGLE SHEET ─────────────────────────────────
+//   fetch(APPS_SCRIPT_URL, {
+//     method:  "POST",
+//     mode:    "no-cors",  
+//     headers: { "Content-Type": "text/plain;charset=utf-8" },
+//     body: JSON.stringify({
+//       name:         currentUser,
+//       deducted:     totalDeductedToday,
+//       points:       data.points,
+//       count:        data.count,
+//       monthlyTotal: data.monthlyTotal,
+//       date:         today,
+//       time:         now.toLocaleTimeString("en-GB")
+//     })
+//   })
+//   .then(() => { console.log(" Data sent!"); })
+//   .catch(err => { console.error(" Error:", err); });
+
+//   updateDisplay();
+//   alert("2 Points Deducted!\nRemaining Points: " + data.points);
+// }
+
+
+
 function deduct() {
   let data = JSON.parse(localStorage.getItem(currentUser));
 
-  const now     = new Date();
-  const today   = now.toLocaleDateString("en-GB"); // dd/MM/yyyy
+  const now = new Date();
+  const today = now.toLocaleDateString("en-GB");
   const nowTime = now.getTime();
-
-  // ── DAILY RESET ─────────────────────────────────────────
-  if (data.lastDate !== today) {
-    data.count    = 0;
-    data.lastDate = today;
-  }
 
   // ── 28-DAY RESET ────────────────────────────────────────
   const diffDays = (nowTime - data.startDate) / (1000 * 60 * 60 * 24);
+
   if (diffDays >= 28) {
+    data.points = 1000;
+    data.count = 0;
     data.monthlyTotal = 0;
-    data.points       = 1000;
-    data.startDate    = nowTime;
+    data.startDate = nowTime;
   }
 
-  // ── DEDUCT 2 POINTS ─────────────────────────────────────
+  // ── DAILY DATE UPDATE ONLY ─────────────────────────────
+  data.lastDate = today;
+
+  // ── DEDUCT 2 POINTS ────────────────────────────────────
   const deductionPerClick = 2;
-  data.points             = Math.max(0, data.points - deductionPerClick);
-  data.count             += 1;
-  data.monthlyTotal      += 1;
+
+  data.points = Math.max(0, data.points - deductionPerClick);
+
+  // Total clicks overall for 28 days
+  data.count += 1;
+
+  // Monthly total
+  data.monthlyTotal += 1;
 
   localStorage.setItem(currentUser, JSON.stringify(data));
 
-  // Cumulative deduction for today
-  // Click 1→2, Click 2→4, Click 40→80
-  const totalDeductedToday = data.count * deductionPerClick;
+  // Total deducted till now
+  const totalDeducted = data.count * deductionPerClick;
 
-  // ── SEND TO GOOGLE SHEET ─────────────────────────────────
+  // ── SEND TO GOOGLE SHEET ───────────────────────────────
   fetch(APPS_SCRIPT_URL, {
-    method:  "POST",
-    mode:    "no-cors",  
-    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "text/plain;charset=utf-8"
+    },
     body: JSON.stringify({
-      name:         currentUser,
-      deducted:     totalDeductedToday,
-      points:       data.points,
-      count:        data.count,
+      name: currentUser,
+      deducted: totalDeducted,
+      points: data.points,
+      count: data.count,
       monthlyTotal: data.monthlyTotal,
-      date:         today,
-      time:         now.toLocaleTimeString("en-GB")
+      date: today,
+      time: now.toLocaleTimeString("en-GB")
     })
   })
-  .then(() => { console.log(" Data sent!"); })
-  .catch(err => { console.error(" Error:", err); });
+  .then(() => {
+    console.log("Data sent!");
+  })
+  .catch(err => {
+    console.error("Error:", err);
+  });
 
   updateDisplay();
-  alert("2 Points Deducted!\nRemaining Points: " + data.points);
+
+  alert(
+    "2 Points Deducted!\nRemaining Points: " + data.points
+  );
 }
+
+
 
 // UPDATE UI
 function updateInfo(){
