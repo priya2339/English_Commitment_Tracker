@@ -214,7 +214,7 @@ function login() {
   //   }));
   // }
 
-
+const clickSound = new Audio("click.mp3");
 
 fetch(`${APPS_SCRIPT_URL}?action=getStudentData&name=${encodeURIComponent(currentUser)}`)
   .then(res => res.json())
@@ -310,7 +310,7 @@ function updateDisplay() {
 
 function deduct() {
   let data = JSON.parse(localStorage.getItem(currentUser));
-
+  clickSound.play();
   const now = new Date();
   const today = now.toLocaleDateString("en-GB");
   const nowTime = now.getTime();
