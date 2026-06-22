@@ -139,7 +139,7 @@ const STUDENTS = {
   "Ankita Gupta": "P131",
   "Seeman Bareth": "P132",
   "Varsha Pradhan": "P133",
-  "Manisha Sao": "P134",
+  "Manisha Sao2": "P134",
   "Divya Sahu": "P135",
   "Archana Gupta": "P136",
   "Tisha Gupta": "P137",
@@ -233,21 +233,29 @@ fetch(`${APPS_SCRIPT_URL}?action=getStudentData&name=${encodeURIComponent(curren
     updateDisplay();
   });
 
-  
-  updateDisplay();
 }
 
 // ============================================================
 // UPDATE DISPLAY — refreshes points + count on screen
 // ============================================================
+// function updateDisplay() {
+//   const data = JSON.parse(localStorage.getItem(currentUser));
+
+//   const pointsEl = document.getElementById("pointsDisplay");
+//   if (pointsEl) pointsEl.innerText = data.points;
+
+//   const countEl = document.getElementById("countDisplay");
+//   if (countEl) countEl.innerText = data.count;
+// }
+
 function updateDisplay() {
+
   const data = JSON.parse(localStorage.getItem(currentUser));
 
-  const pointsEl = document.getElementById("pointsDisplay");
-  if (pointsEl) pointsEl.innerText = data.points;
+  if (!data) return;
 
-  const countEl = document.getElementById("countDisplay");
-  if (countEl) countEl.innerText = data.count;
+  document.getElementById("pointsDisplay").innerText = data.points;
+  document.getElementById("countDisplay").innerText = data.count;
 }
 
 // // ============================================================
@@ -311,9 +319,20 @@ function updateDisplay() {
 
 
 function deduct() {
- const clickSound = new Audio("click.mp3");
+  const clickSound = new Audio("click.mp3");
+
   let data = JSON.parse(localStorage.getItem(currentUser));
+
+  if (!data) {
+    alert("Please wait 2 seconds after login.");
+    return;
+  }
+
   clickSound.play();
+ 
+ // const clickSound = new Audio("click.mp3");
+ //  let data = JSON.parse(localStorage.getItem(currentUser));
+ //  clickSound.play();
   const now = new Date();
   const today = now.toLocaleDateString("en-GB");
   const nowTime = now.getTime();
